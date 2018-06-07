@@ -8,6 +8,6 @@ const sharedPort = remote.getGlobal("sharedPort");
 window.sharedPort = sharedPort;
 
 ReactDOM.render(
-    <App />,
+    <App sharedPort={sharedPort} />,
     document.getElementById('root')
 );

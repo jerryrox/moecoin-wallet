@@ -1,14 +1,22 @@
 {
+  "name": "Moecoin-Wallet",
+  "productName": "Moecoin Wallet",
   "scripts": {
     "start": "concurrently --kill-others \"yarn run startReact\" \"ENV=dev electron .\"",
-    "startReact": "cd uidev && npm start"
+    "startReact": "cd uidev && npm start",
+    "build": "electron-packager . --prune=true --ignore=/uidev --overwrite --out=dist",
+    "prebuild": "yarn run deleteWallet && cd uidev && npm run build",
+    "deleteWallet": "rm -rf moecoin/src/privateKey"
   },
   "main": "main.js",
   "devDependencies": {
     "concurrently": "^3.5.1",
-    "electron": "^2.0.2"
+    "electron": "^2.0.2",
+    "electron-packager": "^12.1.0"
   },
   "dependencies": {
-    "get-port": "^3.2.0"
+    "get-port": "^3.2.0",
+    "prop-types": "^15.6.1",
+    "reset-css": "^4.0.1"
   }
 }
